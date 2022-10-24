@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# To-do:
+# * Save error/warning log in album folder
+# * Add conversion code for 'ape' and 'wv'
+
+WK_DIR="${1:-'$HOME/Music'}"
+
+#Genera una lista de todos los directorios que contienen solo un flac
+DIR_LIST=$(find "$WK_DIR" -name '*.flac' -printf '%h\n'| uniq -u)
+
+#Para $IFS ver 'man bash'
+IFS=$'\n'
+for SUBDIR in $DIR_LIST
+do
+	FLAC_FILE=$(find "$SUBDIR" -name '*.flac')
+	CUE_FILE=${FLAC_FILE/%flac/cue}
+	
+	shnsplit -f "$CUE_FILE" -t %n-%t -o flac -d "$SUBDIR" "$FLAC_FILE"
+
+	PREGAP=$(find "$SUBDIR" -name '*pregap.flac')
+	if [[ -f "$PREGAP" ]]
+	then
+	    rm "$PREGAP"
+	fi
+	
+	cuetag "$CUE_FILE" "$SUBDIR"/[0-9]*.flac
+	
+	mv "$FLAC_FILE" "${FLAC_FILE%'/'*}"'/.unsplit.flac'
+done
+
