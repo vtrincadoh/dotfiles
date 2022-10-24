@@ -1,0 +1,13 @@
+[safe]
+	directory = *
+[user]
+	name = Vicente Trincado
+	email = vicente.trincado@sansano.usm.cl
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[core]
+	editor = emacs
