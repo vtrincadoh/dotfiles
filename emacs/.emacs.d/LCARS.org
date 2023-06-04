@@ -87,7 +87,7 @@ las cosas que usan los chicos cool.
 #+begin_src emacs-lisp
   (setq register-preview-delay 0)
 
-  (set-register ?L (cons 'file ("~/.emacs.d/LCARS.org")))
+  (set-register ?L (cons 'file "~/.emacs.d/LCARS.org"))
   (set-register ?n (cons 'file org-default-notes-file))
   (set-register ?O (cons 'file org-directory))
 #+end_src

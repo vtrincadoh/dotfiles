@@ -42,7 +42,7 @@
 
 (setq register-preview-delay 0)
 
-(set-register ?L (cons 'file ("~/.emacs.d/LCARS.org")))
+(set-register ?L (cons 'file "~/.emacs.d/LCARS.org"))
 (set-register ?n (cons 'file org-default-notes-file))
 (set-register ?O (cons 'file org-directory))
 
