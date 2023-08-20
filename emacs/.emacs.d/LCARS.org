@@ -113,18 +113,19 @@ Sacha Chua.
 ** Evil
 #+begin_src emacs-lisp
   (use-package evil
+    :ensure t
     :init
     (setq evil-want-keybinding nil)
     :config
     (evil-mode 1)
     (evil-select-search-module 'evil-search-module 'evil-search)
     (setq evil-ex-search-persistent-highlight nil))
-  ; (use-package evil-surround
-    ; :after evil
-    ; :defer 2
-    ; :config
-    ; (global-evil-surround-mode 1))
 
+  (use-package evil-collection
+    :after evil
+    :ensure t
+    :config
+    (evil-collection-init))
   (evil-define-key 'motion help-mode-map "q" 'kill-this-buffer)
 #+end_src
 ** kbd-mode 
