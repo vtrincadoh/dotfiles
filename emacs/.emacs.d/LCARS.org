@@ -203,6 +203,11 @@ Emacs mode for syntax highlighting kmonad's .kbd files.
   (eval-after-load 'org
     '(org-load-modules-maybe t))
 #+end_src
+*** El Gantt
+#+begin_src emacs-lisp
+  (use-package elgantt
+    :quelpa (elgantt :fetcher github :repo "legalnonsense/elgantt"))
+#+end_src
 ** Orgmode startup setup function
 #+begin_src emacs-lisp
   (defun my-org-setup ()
