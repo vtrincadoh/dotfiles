@@ -171,7 +171,15 @@ Emacs mode for syntax highlighting kmonad's .kbd files.
 
     ;; Optionally enable cycling for `vertico-next' and `vertico-previous'.
     ;; (setq vertico-cycle t)
-    ) 
+    )
+#+end_src
+*** Orderless
+#+begin_src emacs-lisp
+  (use-package orderless
+    :ensure t
+    :custom
+    (completion-styles '(orderless basic))
+    (completion-category-overrides '((file (styles basic partial-completion)))))
 #+end_src
 * Org-mode
 ** Orgmode startup setup function
