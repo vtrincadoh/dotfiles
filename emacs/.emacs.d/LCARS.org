@@ -177,14 +177,14 @@ Emacs mode for syntax highlighting kmonad's .kbd files.
 ** Orgmode packages
 *** Evil Org
 #+begin_src emacs-lisp
-  (use-package evil-org
-    :ensure t
-    :diminish evil-org-mode
-    :after org
-    :hook (org-mode . (lambda () evil-org-mode))
-    :config
-    (require 'evil-org-agenda)
-    (evil-org-agenda-set-keys))
+  ;; (use-package evil-org
+    ;; :ensure t
+    ;; :diminish evil-org-mode
+    ;; :after org
+    ;; :hook (org-mode . (lambda () evil-org-mode))
+    ;; :config
+    ;; (require 'evil-org-agenda)
+    ;; (evil-org-agenda-set-keys))
 #+end_src
 *** Org-modern
 #+begin_src emacs-lisp
