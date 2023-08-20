@@ -1,20 +1,17 @@
-#+TITLE: Configuración de LCARS
+#+TITLE: Archivo de Configuración de sistema LCARS
 #+AUTHOR: Vicente Trincado
 #+EMAIL: vtrincado.h@gmail.com
 #+PROPERTY: header-args:emacs-lisp :tangle yes :results silent :exports code
-#+OPTIONS: toc:nil h:4 num:nil
 
-* Sobre este archivo
 :PROPERTIES:
 :CUSTOM_ID: babel-init
 :END:
 <<babel-init>>
 
-Robado de varias partes. Probablemente tenga spanglish metido en todas
-partes, pero es porque pienso así nomás.
+Robado de varias partes. Probablemente tenga spanglish metido en todas partes, pero es porque pienso así nomás.
 
 Este es mi =init.el=:
-#+begin_src emacs-lisp :tangle "init.el" :eval no 
+#+begin_src emacs-lisp :tangle "~/.emacs.d/init.el" :eval no 
   (load-file "~/.emacs.d/LCARS.el")
 
   (put 'narrow-to-region 'disabled nil)
@@ -26,7 +23,8 @@ Este es mi =init.el=:
   ;; This sets up the load path so that we can override it
   (setq warning-suppress-log-types '((package reinitialization)))  (package-initialize)
   (setq custom-file "~/.config/emacs/custom-settings.el")
-  
+  (setq initial-buffer-choice "~/org/0start.org")
+
   (setq use-package-always-ensure t)
   (load custom-file t)
 #+end_src
@@ -87,6 +85,7 @@ las cosas que usan los chicos cool.
 #+begin_src emacs-lisp
   (setq register-preview-delay 0)
 
+  (set-register ?0 (cons 'file (concat org-directory "/0start.org")))
   (set-register ?L (cons 'file "~/.emacs.d/LCARS.org"))
   (set-register ?n (cons 'file org-default-notes-file))
   (set-register ?O (cons 'file org-directory))
@@ -102,13 +101,24 @@ Sacha Chua.
                  (cons tramp-file-name-regexp nil)))
 #+end_src
 * Teclado
-** TODO Which-key
+** Which-key
+
+#+begin_src emacs-lisp
+  (use-package which-key
+    :diminish which-key-mode
+    :init
+    (which-key-mode)
+    (which-key-setup-minibuffer))
+#+end_src
 ** Evil
 #+begin_src emacs-lisp
   (use-package evil
+    :init
+    (setq evil-want-keybinding nil)
     :config
     (evil-mode 1)
-    (evil-select-search-module 'evil-search-module 'evil-search))
+    (evil-select-search-module 'evil-search-module 'evil-search)
+    (setq evil-ex-search-persistent-highlight nil))
   ; (use-package evil-surround
     ; :after evil
     ; :defer 2
@@ -262,7 +272,7 @@ Emacs mode for syntax highlighting kmonad's .kbd files.
 #+end_src
 *** Misceláneos
 #+begin_src emacs-lisp 
-  ) ;; Este paréntesis termina =use-key org=
+  ) ;; Este paréntesis termina =use-package org=
 #+end_src
 *** Keyboard shortcuts
 Voy a tener que arreglar esta parte, está como muy separada.

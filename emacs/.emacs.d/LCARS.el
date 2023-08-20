@@ -1,6 +1,7 @@
 ;; This sets up the load path so that we can override it
 (setq warning-suppress-log-types '((package reinitialization)))  (package-initialize)
 (setq custom-file "~/.config/emacs/custom-settings.el")
+(setq initial-buffer-choice "~/org/0start.org")
 
 (setq use-package-always-ensure t)
 (load custom-file t)
@@ -34,6 +35,10 @@
 (setq use-short-answers t) ;; When emacs asks yes/no, answer with y/n
 (setq vc-follow-symlinks t) ;; If file is symlinkd, and under vc, follow link
 
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(setq default-frame-alist '((undecorated . t)))
+(scroll-bar-mode -1)
 (setq dired-kill-when-opening-new-dired-buffer t)
 (setq calendar-week-start-day 1)
 
@@ -42,6 +47,7 @@
 
 (setq register-preview-delay 0)
 
+(set-register ?0 (cons 'file (concat org-directory "/0start.org")))
 (set-register ?L (cons 'file "~/.emacs.d/LCARS.org"))
 (set-register ?n (cons 'file org-default-notes-file))
 (set-register ?O (cons 'file org-directory))
@@ -51,10 +57,19 @@
   (add-to-list 'tramp-backup-directory-alist
                (cons tramp-file-name-regexp nil)))
 
+(use-package which-key
+  :diminish which-key-mode
+  :init
+  (which-key-mode)
+  (which-key-setup-minibuffer))
+
 (use-package evil
+  :init
+  (setq evil-want-keybinding nil)
   :config
   (evil-mode 1)
-  (evil-select-search-module 'evil-search-module 'evil-search))
+  (evil-select-search-module 'evil-search-module 'evil-search)
+  (setq evil-ex-search-persistent-highlight nil))
 ; (use-package evil-surround
   ; :after evil
   ; :defer 2
@@ -127,6 +142,9 @@
 (eval-after-load 'org
   '(org-load-modules-maybe t))
 
+(use-package elgantt
+  :quelpa (elgantt :fetcher github :repo "legalnonsense/elgantt"))
+
 (defun my-org-setup ()
   (org-indent-mode)
   (visual-line-mode 1)
@@ -166,7 +184,7 @@
          "* [[%:link][%(transform-square-brackets-to-round-ones \"%:description\")]] :BOOKMARK: \n%u ")
         ))
 
-) ;; Este paréntesis termina =use-key org=
+) ;; Este paréntesis termina =use-package org=
 
 (bind-key "C-c c" 'org-capture)
 (bind-key "C-c a" 'org-agenda)
