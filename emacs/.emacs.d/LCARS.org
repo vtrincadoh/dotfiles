@@ -174,6 +174,14 @@ Emacs mode for syntax highlighting kmonad's .kbd files.
     ) 
 #+end_src
 * Org-mode
+** Orgmode startup setup function
+#+begin_src emacs-lisp
+  (defun my-org-setup ()
+    (org-indent-mode)
+    (visual-line-mode 1)
+    (centered-cursor-mode)
+    (evil-org-mode))
+#+end_src
 ** Orgmode packages
 *** Evil Org
 #+begin_src emacs-lisp
@@ -218,14 +226,6 @@ Emacs mode for syntax highlighting kmonad's .kbd files.
 #+begin_src emacs-lisp
   (use-package elgantt
     :quelpa (elgantt :fetcher github :repo "legalnonsense/elgantt"))
-#+end_src
-** Orgmode startup setup function
-#+begin_src emacs-lisp
-  (defun my-org-setup ()
-    (org-indent-mode)
-    (visual-line-mode 1)
-    (centered-cursor-mode)
-    (evil-org-mode))
 #+end_src
 ** Org Mode Config
 *** Preámbulo
