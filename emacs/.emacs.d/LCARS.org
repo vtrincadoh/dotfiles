@@ -55,17 +55,19 @@ Acá probablemente debería tener =quelpa=, y =quelpa-use-package=
 instalados de antes...
 
 #+begin_src emacs-lisp
-  (unless (package-installed-p 'use-package)
-    (package-install 'use-package))
-  (setq use-package-always-ensure t)
-  (require 'use-package)
+    (unless (package-installed-p 'use-package)
+      (package-install 'use-package))
+    (setq use-package-always-ensure t)
+    (require 'use-package)
+    (use-package quelpa
+      :ensure t)
 
-  (quelpa
-   '(quelpa-use-package
-     :fetcher git
-     :url "https://github.com/quelpa/quelpa-use-package.git"))
-  (require 'quelpa-use-package)
-  (quelpa-use-package-activate-advice)
+    (quelpa
+     '(quelpa-use-package
+       :fetcher git
+       :url "https://github.com/quelpa/quelpa-use-package.git"))
+    (require 'quelpa-use-package)
+    (quelpa-use-package-activate-advice)
 #+end_src
 * Configuraciones generales
 #+begin_src emacs-lisp
