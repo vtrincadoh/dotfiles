@@ -306,6 +306,9 @@ Voy a tener que arreglar esta parte, está como muy separada.
     "Transforms [] into (), other chars left unchanged."
     (concat
      (mapcar #'(lambda (c) (if (equal c ?\[) ?\( (if (equal c ?\]) ?\) c))) string-to-transform)))
+  (defun load-init
+      (interactive)
+    (load-file "~/.emacs.d/init.el"))
 #+end_src
 
 * Misc Packages
