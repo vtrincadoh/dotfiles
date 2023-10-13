@@ -18,6 +18,37 @@ Este es mi =init.el=:
   (put 'list-timers 'disabled nil)
 #+end_src
 
+* Table of Contents :toc:
+- [[#inicialización][Inicialización]]
+- [[#información-del-sistema][Información del sistema]]
+- [[#información-personal][Información personal]]
+- [[#configuración-de-paquetes][Configuración de paquetes]]
+  - [[#use-package][Use-package]]
+- [[#configuraciones-generales][Configuraciones generales]]
+- [[#registros][Registros]]
+- [[#backups][Backups]]
+- [[#teclado][Teclado]]
+  - [[#which-key][Which-key]]
+  - [[#evil][Evil]]
+  - [[#kbd-mode][kbd-mode]]
+- [[#visuals][Visuals]]
+  - [[#general][General]]
+  - [[#modeline][Modeline]]
+- [[#interacción-edición-y-archivos][Interacción, edición, y archivos]]
+  - [[#completion][Completion]]
+  - [[#whisper-ai-stt][Whisper AI (stt)]]
+  - [[#undo-tree][Undo-tree]]
+  - [[#jinx-spellcheck-off][Jinx (spellcheck) [OFF]]]
+  - [[#denote-off][Denote [OFF]]]
+- [[#org-mode][Org-mode]]
+  - [[#orgmode-startup-setup-function][Orgmode startup setup function]]
+  - [[#orgmode-packages][Orgmode packages]]
+  - [[#org-mode-config][Org Mode Config]]
+- [[#syncthing][Syncthing]]
+- [[#funciones-propias][Funciones propias]]
+- [[#misc-packages][Misc Packages]]
+- [[#inspiraciones][Inspiraciones]]
+
 * Inicialización
 #+begin_src emacs-lisp
   ;; This sets up the load path so that we can override it
@@ -144,6 +175,7 @@ Emacs mode for syntax highlighting kmonad's .kbd files.
   (setq default-frame-alist '((undecorated . t)))
   (setq inhibit-startup-message t)
 
+  (global-display-line-numbers-mode)
   (menu-bar-mode -1)
   (tool-bar-mode -1)
   (if my-laptop-p (scroll-bar-mode -1))
@@ -154,6 +186,24 @@ Emacs mode for syntax highlighting kmonad's .kbd files.
       :config
       (telephone-line-mode 1))
 #+end_src
+** Modus Themes
+#+BEGIN_SRC emacs-lisp
+  (use-package modus-themes
+    :ensure t
+    :config
+    ;;;; Add all your customizations prior to loading the themes
+    ;;(setq modus-themes-italic-constructs t
+          ;;modus-themes-bold-constructs nil)
+  ;;
+    ;;;; Maybe define some palette overrides, such as by using our presets
+    ;;(setq modus-themes-common-palette-overrides
+          ;;modus-themes-preset-overrides-intense)
+
+    ;; Load the theme of your choice.
+    (load-theme 'modus-operandi-tinted)
+
+    (define-key global-map (kbd "<f5>") #'modus-themes-toggle))
+#+END_SRC
 * Interacción, edición, y archivos
 ** Completion
 *** Vertico
@@ -183,6 +233,72 @@ Emacs mode for syntax highlighting kmonad's .kbd files.
     (completion-styles '(orderless basic))
     (completion-category-overrides '((file (styles basic partial-completion)))))
 #+end_src
+*** YASnippet
+#+begin_src emacs-lisp
+  (use-package yasnippet
+    :diminish yas-minor-mode
+    :config
+    (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+    (yas-global-mode 1) ;; o M-x yas-reload-all si YAS ya inició
+    )
+#+end_src
+** Whisper AI (stt)
+#+BEGIN_SRC emacs-lisp
+  (use-package whisper
+    :quelpa (whisper :fetcher github :repo "natrys/whisper.el")
+    :config
+    (setq whisper-install-directory "/tmp/"
+          whisper-model "base"
+          whisper-language "es"
+          whisper-translate nil))
+#+END_SRC
+** Undo-tree
+#+begin_src emacs-lisp
+  (use-package undo-tree
+    :config
+    (global-undo-tree-mode))
+#+end_src
+** Jinx (spellcheck)
+No funciona actualmente, hay que ajustar los diccionarios de Enchant. Revisar docs de Jinx
+#+BEGIN_SRC emacs-lisp
+  (use-package jinx
+    :hook (org-mode . jinx-mode)
+    :bind (("M-$" . jinx-correct)
+           ("C-M-$" . jinx-languages)))
+#+END_SRC
+** Denote [OFF]
+#+BEGIN_SRC emacs-lisp
+  (use-package denote
+    :disabled
+    :ensure t
+    :config
+    ;;
+    ;; General key bindings
+    (setq denote-directory (expand-file-name "~/org"))
+    (setq denote-known-keywords '("emacs" "project"))
+    (setq denote-infer-keywords t)
+    (setq denote-sort-keywords t)
+    ;;
+    ;; Tweaking the frontmatter
+    (setq denote-org-front-matter
+          "#+title: %s\n#+date: %s\n#+filetags: %s\n#+identifier: %s\n#+author:\n#+startup: content\n")
+    :bind
+    ("C-c n n" . denote-open-or-create)
+    ("C-c n l" . denote-link-or-create)
+    ("C-c n b" . denote-link-find-file)
+    ("C-c n B" . denote-link-backlinks)
+  )
+#+END_SRC
+** Dired
+#+BEGIN_SRC emacs-lisp
+  (use-package dired
+    :ensure nil
+    :custom ((dired-listing-switches "=-agho --group-directories-first"))
+    :config
+    (evil-collection-define-key 'normal 'dired-mode-map
+      "h" 'dired-up-directory
+      "l" 'dired-find-file))
+#+END_SRC
 * Org-mode
 ** Orgmode startup setup function
 #+begin_src emacs-lisp
@@ -306,7 +422,7 @@ Voy a tener que arreglar esta parte, está como muy separada.
     "Transforms [] into (), other chars left unchanged."
     (concat
      (mapcar #'(lambda (c) (if (equal c ?\[) ?\( (if (equal c ?\]) ?\) c))) string-to-transform)))
-  (defun load-init
+  (defun load-init ()
       (interactive)
     (load-file "~/.emacs.d/init.el"))
 #+end_src
