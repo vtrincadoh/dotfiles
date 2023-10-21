@@ -293,11 +293,13 @@ Funciona filete en realidad, el único tema es el texto que inserta al buffer. D
 #+BEGIN_SRC emacs-lisp
   (use-package dired
     :ensure nil
-    :custom ((dired-listing-switches "=-agho --group-directories-first"))
+    :custom ((dired-listing-switches "-agho --group-directories-first"))
     :config
     (evil-collection-define-key 'normal 'dired-mode-map
       "h" 'dired-up-directory
       "l" 'dired-find-file))
+  (use-package nerd-icons-dired
+    :hook (dired-mode . nerd-icons-dired-mode))
 #+END_SRC
 * Org-mode
 ** Orgmode startup setup function
