@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: Insert Title and Date
+# key: <t
+# --
+#+TITLE: ${1:title}
+#+AUTHOR: Vicente Trincado H.
+#+DATE: `(format-time-string "%b %d %Y")`
+:PROPERTIES:
+#+OPTIONS:
+:END:
+
+$0

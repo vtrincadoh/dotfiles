@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Insertar Definición a Glosario
+# key: <def
+# --
+*${0:Term}* /${1:Abbrv}/: $2
