@@ -259,7 +259,7 @@ Emacs mode for syntax highlighting kmonad's .kbd files.
     (global-undo-tree-mode))
 #+end_src
 ** Jinx (spellcheck)
-No funciona actualmente, hay que ajustar los diccionarios de Enchant. Revisar docs de Jinx
+Funciona filete en realidad, el único tema es el texto que inserta al buffer. De repente si creo que el default debería ser apagado. We'll see.
 #+BEGIN_SRC emacs-lisp
   (use-package jinx
     :hook (org-mode . jinx-mode)
