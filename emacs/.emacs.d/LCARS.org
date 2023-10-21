@@ -312,17 +312,6 @@ Funciona filete en realidad, el único tema es el texto que inserta al buffer. D
     )
 #+end_src
 ** Orgmode packages
-*** Evil Org
-#+begin_src emacs-lisp
-  ; (use-package evil-org
-    ; :ensure t
-    ; :diminish evil-org-mode
-    ; :after org
-    ; :hook (org-mode . (lambda () evil-org-mode))
-    ; :config
-    ; (require 'evil-org-agenda)
-    ; (evil-org-agenda-set-keys))
-#+end_src
 *** Org-modern
 #+begin_src emacs-lisp
   (use-package org-modern
