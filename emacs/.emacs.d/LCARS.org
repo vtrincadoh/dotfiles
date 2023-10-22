@@ -184,8 +184,8 @@ Sacha Chua.
 *** Toggles
 #+BEGIN_SRC emacs-lisp
     "t" '(nil :which-key "toggles")
-    "tn" '(display-line-numbers-mode :which-key "line numbers")
-    "tt" '(nil :which-key "theme color") ;; TODO Para cambiar entre ef-cyprus y ef-elea-dark
+    "tl" '(display-line-numbers-mode :which-key "line numbers")
+    "tt" '(toggle-dark-mode :which-key "theme color")
 #+END_SRC
 
 *** Cierre
@@ -230,6 +230,34 @@ Emacs mode for syntax highlighting kmonad's .kbd files.
     ;;;; Maybe define some palette overrides, such as by using our presets
     ;;(setq modus-themes-common-palette-overrides
           ;;modus-themes-preset-overrides-intense)
+    )
+#+END_SRC
+** Ef-themes
+#+BEGIN_SRC emacs-lisp
+  (use-package ef-themes
+    :config
+    (load-theme 'ef-cyprus t))
+#+END_SRC
+** Dark Theme Toggle
+Emacs inicia con light-theme por defecto.
+#+BEGIN_SRC emacs-lisp
+  (defvar dark-mode-p nil "Whether or not dark mode is enabled")
+
+  (defun toggle-dark-mode ()
+    "Toggle dark mode"
+    (interactive)
+    (if (not dark-mode-p)
+        (progn
+          (disable-theme 'ef-cyprus)
+          (load-theme 'ef-elea-dark)
+          (setq dark-mode-p t)
+          )
+      (progn
+        (disable-theme 'ef-elea-dark)
+        (load-theme 'ef-cyprus)
+        (setq dark-mode-p nil)
+        )
+      )
     )
 #+END_SRC
 * Interacción, edición, y archivos
