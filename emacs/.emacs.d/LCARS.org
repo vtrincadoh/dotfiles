@@ -105,7 +105,6 @@ instalados de antes...
   (setq use-short-answers t) ;; When emacs asks yes/no, answer with y/n
   (setq vc-follow-symlinks t) ;; If file is symlinkd, and under vc, follow link
 
-  (setq dired-kill-when-opening-new-dired-buffer t)
   (setq calendar-week-start-day 1)
 
   (setq org-directory "~/org")
@@ -354,7 +353,9 @@ Funciona filete en realidad, el único tema es el texto que inserta al buffer. D
   (use-package dired
     :ensure nil
     :custom ((dired-listing-switches "-agho --group-directories-first"))
+    :hook (dired-mode . dired-hide-details-mode)
     :config
+    (setq dired-kill-when-opening-new-dired-buffer t)
     (evil-collection-define-key 'normal 'dired-mode-map
       "h" 'dired-up-directory
       "l" 'dired-find-file))
@@ -473,9 +474,19 @@ Voy a tener que arreglar esta parte, está como muy separada.
     "Transforms [] into (), other chars left unchanged."
     (concat
      (mapcar #'(lambda (c) (if (equal c ?\[) ?\( (if (equal c ?\]) ?\) c))) string-to-transform)))
+
   (defun load-init ()
       (interactive)
     (load-file "~/.emacs.d/init.el"))
+
+  (defun lcars-config ()
+    (interactive)
+    (find-file "~/.emacs.d/LCARS.org"))
+
+  (defun my-dired-home ()
+    "Open Dired for the home directory."
+    (interactive)
+    (dired "~"))
 #+end_src
 
 * Misc Packages
