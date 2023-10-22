@@ -10,44 +10,13 @@
 
 Robado de varias partes. Probablemente tenga spanglish metido en todas partes, pero es porque pienso así nomás.
 
-Este es mi =init.el=:
+* =init.el=:
 #+begin_src emacs-lisp :tangle "~/.emacs.d/init.el" :eval no 
   (load-file "~/.emacs.d/LCARS.el")
 
   (put 'narrow-to-region 'disabled nil)
   (put 'list-timers 'disabled nil)
 #+end_src
-
-* Table of Contents :toc:
-- [[#inicialización][Inicialización]]
-- [[#información-del-sistema][Información del sistema]]
-- [[#información-personal][Información personal]]
-- [[#configuración-de-paquetes][Configuración de paquetes]]
-  - [[#use-package][Use-package]]
-- [[#configuraciones-generales][Configuraciones generales]]
-- [[#registros][Registros]]
-- [[#backups][Backups]]
-- [[#teclado][Teclado]]
-  - [[#which-key][Which-key]]
-  - [[#evil][Evil]]
-  - [[#kbd-mode][kbd-mode]]
-- [[#visuals][Visuals]]
-  - [[#general][General]]
-  - [[#modeline][Modeline]]
-- [[#interacción-edición-y-archivos][Interacción, edición, y archivos]]
-  - [[#completion][Completion]]
-  - [[#whisper-ai-stt][Whisper AI (stt)]]
-  - [[#undo-tree][Undo-tree]]
-  - [[#jinx-spellcheck-off][Jinx (spellcheck) [OFF]]]
-  - [[#denote-off][Denote [OFF]]]
-- [[#org-mode][Org-mode]]
-  - [[#orgmode-startup-setup-function][Orgmode startup setup function]]
-  - [[#orgmode-packages][Orgmode packages]]
-  - [[#org-mode-config][Org Mode Config]]
-- [[#syncthing][Syncthing]]
-- [[#funciones-propias][Funciones propias]]
-- [[#misc-packages][Misc Packages]]
-- [[#inspiraciones][Inspiraciones]]
 
 * Inicialización
 #+begin_src emacs-lisp
@@ -82,9 +51,6 @@ Este es mi =init.el=:
   (package-initialize)
 #+end_src
 ** Use-package
-Acá probablemente debería tener =quelpa=, y =quelpa-use-package=
-instalados de antes...
-
 #+begin_src emacs-lisp
     (unless (package-installed-p 'use-package)
       (package-install 'use-package))
@@ -237,6 +203,7 @@ Emacs mode for syntax highlighting kmonad's .kbd files.
   (global-display-line-numbers-mode)
   (menu-bar-mode -1)
   (tool-bar-mode -1)
+  (spacious-padding-mode)
   (if my-laptop-p (scroll-bar-mode -1))
 #+end_src
 ** Modeline
@@ -257,11 +224,7 @@ Emacs mode for syntax highlighting kmonad's .kbd files.
     ;;;; Maybe define some palette overrides, such as by using our presets
     ;;(setq modus-themes-common-palette-overrides
           ;;modus-themes-preset-overrides-intense)
-
-    ;; Load the theme of your choice.
-    (load-theme 'modus-operandi-tinted)
-
-    (define-key global-map (kbd "<f5>") #'modus-themes-toggle))
+    )
 #+END_SRC
 * Interacción, edición, y archivos
 ** Completion
@@ -369,7 +332,6 @@ Funciona filete en realidad, el único tema es el texto que inserta al buffer. D
     (org-indent-mode)
     (visual-line-mode 1)
     (centered-cursor-mode)
-   ; (evil-org-mode)
     )
 #+end_src
 ** Orgmode packages
@@ -411,6 +373,7 @@ Funciona filete en realidad, el único tema es el texto que inserta al buffer. D
 #+begin_src emacs-lisp
   (use-package org
     :hook (org-capture-mode . evil-insert-state)
+    :hook (org-src-mode . evil-insert-state)
     :hook (org-mode . my-org-setup)
     :config
 #+end_src
@@ -424,6 +387,9 @@ Funciona filete en realidad, el único tema es el texto que inserta al buffer. D
 *** Interacción
 #+begin_src emacs-lisp
   (setq org-src-tab-acts-natively t)
+  (setq org-return-follows-link t)
+  ;; Open org links in same window
+  (setf (cdr (assoc 'file org-link-frame-setup)) 'find-file)
 #+end_src
 *** To-dos
 #+begin_src emacs-lisp
