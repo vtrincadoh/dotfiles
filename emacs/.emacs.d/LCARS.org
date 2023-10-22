@@ -439,6 +439,13 @@ Voy a tener que arreglar esta parte, está como muy separada.
   (global-set-key (kbd "C-c r r") 'emacs-conflict-resolve-conflicts)
   (global-set-key (kbd "C-c r d") 'emacs-conflict-resolve-conflict-dired)
 #+end_src
+* Magit
+#+BEGIN_SRC emacs-lisp
+  (use-package magit
+    :defer t
+    :hook (git-commit-mode . evil-insert-state)
+    )
+#+END_SRC
 
 * Funciones propias 
 #+begin_src emacs-lisp
@@ -463,7 +470,6 @@ Voy a tener que arreglar esta parte, está como muy separada.
 
 * Misc Packages
 #+begin_src emacs-lisp
-  (use-package magit :defer t)
   (use-package centered-cursor-mode ;;Devuelve un error que aun no se arreglar en Termux
     :diminish centered-cursor-mode
   )
