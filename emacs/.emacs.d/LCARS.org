@@ -152,15 +152,75 @@ Sacha Chua.
     :config
     (evil-mode 1)
     (evil-select-search-module 'evil-search-module 'evil-search)
-    (setq evil-ex-search-persistent-highlight nil))
-
+    (setq evil-ex-search-persistent-highlight nil)
+    (evil-define-key 'motion help-mode-map "q" 'kill-this-buffer)
+    (define-key evil-motion-state-map (kbd "RET") nil)
+    (define-key evil-motion-state-map (kbd "SPC") nil))
+  
   (use-package evil-collection
     :after evil
     :ensure t
     :config
     (evil-collection-init))
-  (evil-define-key 'motion help-mode-map "q" 'kill-this-buffer)
 #+end_src
+** General.el
+*** Preámbulo
+#+BEGIN_SRC emacs-lisp
+  (use-package general)
+
+  (general-define-key
+   :states '(normal motion visual)
+   :keymaps 'override
+   :prefix "SPC"
+
+   ;; Top-level functions
+   "SPC" '(execute-extended-command :which-key "M-x")
+#+END_SRC
+*** Buffers
+#+BEGIN_SRC emacs-lisp
+  ;; Buffers
+  "b" '(nil :which-key "buffer")
+  "bb" '(switch-to-buffer :which-key "switch")
+  "bB" '(ibuffer :which-key "ibuffer")
+  "bd" '(evil-delete-buffer :which-key "delete buffer")
+  "bk" '(kill-this-buffer :which-key "kill buffer")
+  "bp" '(previous-buffer :which-key "previous buffer")
+#+END_SRC
+*** Dired
+#+BEGIN_SRC emacs-lisp
+  ;; Dired
+  "d" '(nil :which-key "dired")
+  "dd" '(my-dired-home :which-key "dired Home")
+  "dj" '(dired-jump :which-key "dired jump")
+#+END_SRC
+
+*** Files
+#+BEGIN_SRC emacs-lisp
+  ;; Files
+  "f" '(nil :which-key "files")
+  "ff" '(find-file :which-key "find file")
+#+END_SRC
+
+*** Projectos
+#+BEGIN_SRC emacs-lisp
+  ;; Projects
+    "p" '(nil :which-key "projects")
+    "pB" '(project-list-buffers :which-key "list buffers")
+    "pd" '(project-dired :which-key "dired")
+    "ps" '(project-switch-project :which-key "switch")
+#+END_SRC
+
+*** Toggles
+#+BEGIN_SRC emacs-lisp
+    "t" '(nil :which-key "toggles")
+    "tn" '(display-line-numbers-mode :which-key "line numbers")
+    "tt" '(nil :which-key "theme color") ;; TODO Para cambiar entre ef-cyprus y ef-elea-dark
+#+END_SRC
+
+*** Cierre
+#+BEGIN_SRC emacs-lisp
+) ;; Cierra SPC prefix block
+#+END_SRC
 ** kbd-mode 
 Emacs mode for syntax highlighting kmonad's .kbd files. 
 #+begin_src emacs-lisp
