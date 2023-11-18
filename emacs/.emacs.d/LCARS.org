@@ -382,13 +382,28 @@ Funciona filete en realidad, el único tema es el texto que inserta al buffer. D
     :ensure nil
     :custom ((dired-listing-switches "-agho --group-directories-first"))
     :hook (dired-mode . dired-hide-details-mode)
+    :hook (dired-mode . dired-omit-mode)
     :config
+    (setq dired-dwim-target t)
+    (setq dired-do-revert-buffer t)
     (setq dired-kill-when-opening-new-dired-buffer t)
     (evil-collection-define-key 'normal 'dired-mode-map
+      "w" 'wdired-change-to-wdired-mode
       "h" 'dired-up-directory
-      "l" 'dired-find-file))
+      "l" 'dired-open-file))
+
+  (use-package dired-ranger)
+
+  (use-package dired-open)
+
   (use-package nerd-icons-dired
     :hook (dired-mode . nerd-icons-dired-mode))
+
+  (use-package dired-hide-dotfiles
+    :hook (dired-mode . dired-hide-dotfiles-mode)
+    :config
+    (evil-collection-define-key 'normal 'dired-mode-map
+      "a" 'dired-hide-dotfiles-mode))
 #+END_SRC
 * Org-mode
 ** Orgmode startup setup function
