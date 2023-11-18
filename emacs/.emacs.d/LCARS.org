@@ -229,6 +229,8 @@ Emacs mode for syntax highlighting kmonad's .kbd files.
   (setq default-frame-alist '((undecorated . t)))
   (setq inhibit-startup-message t)
 
+  (set-face-attribute 'default nil :height 160)
+ 
   (global-display-line-numbers-mode)
   (menu-bar-mode -1)
   (tool-bar-mode -1)
@@ -349,7 +351,6 @@ Emacs inicia con light-theme por defecto.
 Funciona filete en realidad, el único tema es el texto que inserta al buffer. De repente si creo que el default debería ser apagado. We'll see.
 #+BEGIN_SRC emacs-lisp
   (use-package jinx
-    :hook (org-mode . jinx-mode)
     :bind (("M-$" . jinx-correct)
            ("C-M-$" . jinx-languages)))
 #+END_SRC
@@ -552,7 +553,5 @@ Voy a tener que arreglar esta parte, está como muy separada.
   ;; Aquí terminan las configuraciones
 #+end_src
 * Inspiraciones 
-A Sacha Chua, por tener una de las configuraciones más bacanes. A ella
-le robé la estructura general del archivo.
 - [[https://sachachua.com/dotemacs/index.html][Sacha Chua]]
 - [[https://github.com/jakebox/jake-emacs][Jacob Boxerman (JakeB)]]
