@@ -208,6 +208,7 @@ Sacha Chua.
     "t" '(nil :which-key "toggles")
     "tl" '(display-line-numbers-mode :which-key "line numbers")
     "tt" '(toggle-dark-mode :which-key "theme color")
+    "to" '(olivetti-mode :which-key "olivetti mode")
 #+END_SRC
 
 *** Cierre
@@ -240,6 +241,14 @@ Emacs mode for syntax highlighting kmonad's .kbd files.
       :config
       (telephone-line-mode 1))
 #+end_src
+** Olivetti
+Centra el contenido de la página como una Olivetti.
+#+BEGIN_SRC emacs-lisp
+  (use-package olivetti
+    :config
+    (setq olivetti-body-width 82)
+    )
+#+END_SRC
 ** Modus Themes
 #+BEGIN_SRC emacs-lisp
   (use-package modus-themes
