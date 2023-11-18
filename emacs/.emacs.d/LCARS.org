@@ -234,7 +234,6 @@ Emacs mode for syntax highlighting kmonad's .kbd files.
   (global-display-line-numbers-mode)
   (menu-bar-mode -1)
   (tool-bar-mode -1)
-  (spacious-padding-mode)
   (if my-laptop-p (scroll-bar-mode -1))
 #+end_src
 ** Modeline
@@ -292,6 +291,12 @@ Emacs inicia con light-theme por defecto.
         )
       )
     )
+#+END_SRC
+** Extras
+#+BEGIN_SRC emacs-lisp
+  (use-package spacious-padding
+    :init
+    (spacious-padding-mode))
 #+END_SRC
 * Interacción, edición, y archivos
 ** Completion
