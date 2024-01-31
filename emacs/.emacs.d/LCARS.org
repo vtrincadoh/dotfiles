@@ -519,6 +519,18 @@ Funciona filete en realidad, el único tema es el texto que inserta al buffer. D
     :defer t
     :hook (org-mode . org-auto-tangle-mode))
 #+END_SRC
+*** Org-project-capture
+#+BEGIN_SRC emacs-lisp
+  (use-package org-project-capture
+    :bind (("C-c n p" . org-project-capture-project-todo-completing-read))
+    :ensure t
+    :config
+    (progn
+      (setq org-project-capture-default-backend
+            (make-instance 'org-project-capture-projectile-backend))
+      (setq org-project-capture-projects-file "~/org/projects.org")
+      (org-project-capture-single-file)))
+#+END_SRC
 * Syncthing
 #+begin_src emacs-lisp
   (use-package emacs-conflict
