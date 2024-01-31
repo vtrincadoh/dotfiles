@@ -391,6 +391,12 @@ Funciona filete en realidad, el único tema es el texto que inserta al buffer. D
     (evil-collection-define-key 'normal 'dired-mode-map
       "a" 'dired-hide-dotfiles-mode))
 #+END_SRC
+** (n)SXIV 
+#+BEGIN_SRC emacs-lisp
+  (use-package sxiv
+    ;; Recuerda que para esto hiciste un symlink desde nsxiv
+  )
+#+END_SRC
 * Projectile
 #+BEGIN_SRC emacs-lisp
   (use-package projectile
