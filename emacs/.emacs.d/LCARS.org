@@ -2,6 +2,7 @@
 #+AUTHOR: Vicente Trincado
 #+EMAIL: vtrincado.h@gmail.com
 #+PROPERTY: header-args:emacs-lisp :tangle yes :results silent :exports code :toc off
+#+auto_tangle: t
 
 :PROPERTIES:
 :CUSTOM_ID: babel-init
@@ -509,6 +510,12 @@ Funciona filete en realidad, el único tema es el texto que inserta al buffer. D
 #+BEGIN_SRC emacs-lisp
   (use-package org-caldav
     :disabled)
+#+END_SRC
+*** Org-auto-tangle
+#+BEGIN_SRC emacs-lisp
+  (use-package org-auto-tangle
+    :defer t
+    :hook (org-mode . org-auto-tangle-mode))
 #+END_SRC
 * Syncthing
 #+begin_src emacs-lisp
