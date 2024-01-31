@@ -129,6 +129,7 @@ Sacha Chua.
     :ensure t
     :init
     (setq evil-want-keybinding nil)
+    (setq evil-respect-visual-line-mode t)
     :config
     (evil-mode 1)
     (evil-select-search-module 'evil-search-module 'evil-search)
