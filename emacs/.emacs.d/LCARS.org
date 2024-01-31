@@ -75,18 +75,6 @@ Robado de varias partes. Probablemente tenga spanglish metido en todas partes, p
 
   (setq calendar-week-start-day 1)
 #+end_src
-* Registros
-Probablemente esta parte va a desaparecer cuando empiece a usar Ivy, o
-las cosas que usan los chicos cool.
-
-#+begin_src emacs-lisp
-  ;;(setq register-preview-delay 0)
-;;
-  ;;(set-register ?0 (cons 'file (concat org-directory "/0start.org")))
-  ;;(set-register ?L (cons 'file "~/.emacs.d/LCARS.org"))
-  ;;(set-register ?n (cons 'file org-default-notes-file))
-  ;;(set-register ?O (cons 'file org-directory))
-#+end_src
 * Backups
 La verdad es que ni sé muy bien qué hace esta parte. Yo la saqué de
 Sacha Chua.
@@ -148,7 +136,7 @@ Sacha Chua.
     (evil-define-key 'motion help-mode-map "q" 'kill-this-buffer)
     (define-key evil-motion-state-map (kbd "RET") nil)
     (define-key evil-motion-state-map (kbd "SPC") nil))
-  
+
   (use-package evil-collection
     :after evil
     :ensure t
@@ -182,9 +170,9 @@ Sacha Chua.
 *** Dired
 #+BEGIN_SRC emacs-lisp
   ;; Dired
-  "d" '(nil :which-key "dired")
-  "dd" '(my-dired-home :which-key "dired Home")
-  "dj" '(dired-jump :which-key "dired jump")
+  "d" '(nil :which-key "Dired")
+  "dd" '(my-dired-home :which-key "Dired Home")
+  "dj" '(dired-jump :which-key "Dired jump")
 #+END_SRC
 
 *** Files
