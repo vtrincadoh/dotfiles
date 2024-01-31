@@ -104,7 +104,7 @@ Sacha Chua.
     (setq dashboard-icon-type 'nerd-icons)
     (setq dashboard-set-file-icons t)
 
-    (setq dashboard-projects-backend 'project-el)
+    (setq dashboard-projects-backend 'projectile)
     )
 #+END_SRC
 * Teclado
@@ -185,10 +185,10 @@ Sacha Chua.
 *** Projectos
 #+BEGIN_SRC emacs-lisp
   ;; Projects
-    "p" '(nil :which-key "projects")
-    "pB" '(project-list-buffers :which-key "list buffers")
-    "pd" '(project-dired :which-key "dired")
-    "ps" '(project-switch-project :which-key "switch")
+    "p" '(nil :which-key "Projects")
+    "pp" '(consult-projectile-switch-project :which-key "Find file")
+    "pf" '(consult-projectile-find-file :which-key "Find file")
+    "pb" '(consult-projectile-switch-to-buffer :which-key "Switch buffer")
 #+END_SRC
 
 *** Toggles
@@ -390,6 +390,13 @@ Funciona filete en realidad, el único tema es el texto que inserta al buffer. D
     :config
     (evil-collection-define-key 'normal 'dired-mode-map
       "a" 'dired-hide-dotfiles-mode))
+#+END_SRC
+* Projectile
+#+BEGIN_SRC emacs-lisp
+  (use-package projectile
+    :config
+    (projectile-mode +1)
+    (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 #+END_SRC
 * Org-mode
 ** Org Mode Config
