@@ -161,13 +161,14 @@ Sacha Chua.
 *** Buffers
 #+BEGIN_SRC emacs-lisp
   ;; Buffers
-  "b" '(nil :which-key "buffer")
-  "bb" '(consult-buffer :which-key "switch")
-  "bB" '(ibuffer :which-key "ibuffer")
-  "bd" '(evil-delete-buffer :which-key "delete buffer")
-  "bk" '(kill-this-buffer :which-key "kill buffer")
-  "bp" '(previous-buffer :which-key "previous buffer")
-  "bn" '(next-buffer :which-key "next buffer")
+  "b" '(nil :which-key "Buffer")
+  "bb" '(consult-buffer :which-key "Switch buffer")
+  "bB" '(ibuffer :which-key "Ibuffer")
+  "bk" '(kill-this-buffer :which-key "Kill buffer")
+  "bH" '(previous-buffer :which-key "Previous buffer")
+  "bL" '(next-buffer :which-key "Next buffer")
+  "bs" '(scratch-buffer :which-key "Scratch buffer")
+  "bp" '(consult-projectile-switch-to-buffer :which-key "Project buffers")
 #+END_SRC
 *** Dired
 #+BEGIN_SRC emacs-lisp
@@ -184,23 +185,32 @@ Sacha Chua.
   "ff" '(find-file :which-key "Find file")
 #+END_SRC
 
-*** Projectos
+*** Projects
 #+BEGIN_SRC emacs-lisp
   ;; Projects
     "p" '(nil :which-key "Projects")
-    "pp" '(consult-projectile-switch-project :which-key "Find file")
+    "pp" '(consult-projectile-switch-project :which-key "Switch project")
     "pf" '(consult-projectile-find-file :which-key "Find file")
     "pb" '(consult-projectile-switch-to-buffer :which-key "Switch buffer")
+    "pt" '(org-project-capture-project-todo-completing-read :which-key "Project Todo")
 #+END_SRC
 
 *** Toggles
 #+BEGIN_SRC emacs-lisp
-    "t" '(nil :which-key "Toggles")
-    "tl" '(display-line-numbers-mode :which-key "Line numbers")
-    "tt" '(toggle-dark-mode :which-key "Theme color")
-    "to" '(olivetti-mode :which-key "Olivetti mode")
+  ;; Toggles
+  "t" '(nil :which-key "Toggles")
+  "tl" '(display-line-numbers-mode :which-key "Line numbers")
+  "tt" '(toggle-dark-mode :which-key "Theme color")
+  "to" '(olivetti-mode :which-key "Olivetti mode")
 #+END_SRC
 
+*** Org
+#+BEGIN_SRC emacs-lisp
+  ;; Org
+  "o" '(nil :which-key "Org")
+  "oa" '(org-agenda :which-key "Agenda")
+  "op" '(org-project-capture-project-todo-completing-read :which-key "Project Todo")
+#+END_SRC
 *** Cierre
 #+BEGIN_SRC emacs-lisp
 ) ;; Cierra SPC prefix block
