@@ -103,8 +103,13 @@ Sacha Chua.
     (setq dashboard-display-icons-p t)
     (setq dashboard-icon-type 'nerd-icons)
     (setq dashboard-set-file-icons t)
+    (setq dashboard-footer-messages '(
+                                      "Everyone knows that debugging is twice as hard as writing a program in the first place.
+  So if you're as clever as you can be when you write it, how will you ever debug it?
+   ― Brian Kernighan"))
 
     (setq dashboard-projects-backend 'projectile)
+    (setq dashboard-projects-switch-function 'consult-projectile-switch-project)
     )
 #+END_SRC
 * Teclado
