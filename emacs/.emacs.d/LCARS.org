@@ -485,13 +485,7 @@ Funciona filete en realidad, el único tema es el texto que inserta al buffer. D
   (setq org-return-follows-link t)
   ;; Open org links in same window
   (setf (cdr (assoc 'file org-link-frame-setup)) 'find-file)
-  (setq org-directory "~/Documents/org/")
 #+end_src
-*** Agenda
-#+BEGIN_SRC emacs-lisp
-  (setq org-agenda-files (list
-                          (concat org-directory "organizer.org")))
-#+END_SRC
 *** To-dos
 #+begin_src emacs-lisp
   (setq org-todo-keywords
