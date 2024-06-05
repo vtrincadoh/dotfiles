@@ -379,22 +379,21 @@ Funciona filete en realidad, el único tema es el texto que inserta al buffer. D
     :bind (("M-$" . jinx-correct)
            ("C-M-$" . jinx-languages)))
 #+END_SRC
-** Denote [OFF]
+** Denote 
 #+BEGIN_SRC emacs-lisp
   (use-package denote
-    :disabled
     :ensure t
     :config
     ;;
     ;; General key bindings
-    (setq denote-directory (expand-file-name "~/org"))
+    (setq denote-directory (expand-file-name "~/denote"))
     (setq denote-known-keywords '("emacs" "project"))
     (setq denote-infer-keywords t)
     (setq denote-sort-keywords t)
     ;;
     ;; Tweaking the frontmatter
     (setq denote-org-front-matter
-          "#+title: %s\n#+date: %s\n#+filetags: %s\n#+identifier: %s\n#+author:\n#+startup: content\n")
+          "#+title: %s\n#+date: %s\n#+filetags: %s\n#+identifier: %s\n#+author: Vicente Trincado H.\n#+startup: content\n")
     :bind
     ("C-c n n" . denote-open-or-create)
     ("C-c n l" . denote-link-or-create)
