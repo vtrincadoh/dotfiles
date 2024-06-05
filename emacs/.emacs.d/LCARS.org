@@ -200,6 +200,13 @@ Sacha Chua.
     "pt" '(org-project-capture-project-todo-completing-read :which-key "Project Todo")
 #+END_SRC
 
+*** Registers
+#+BEGIN_SRC emacs-lisp
+     ;; Registers
+     "r" '(jump-to-register :which-key "Registers")
+
+#+END_SRC
+
 *** Toggles
 #+BEGIN_SRC emacs-lisp
   ;; Toggles
@@ -305,6 +312,13 @@ Emacs inicia con light-theme por defecto.
     (spacious-padding-mode))
 #+END_SRC
 * Interacción, edición, y archivos
+** Registers
+#+BEGIN_SRC emacs-lisp
+  (setq register-preview-delay 0) ;; Show registers ASAP
+
+  (set-register ?l (cons 'file "~/.emacs.d/LCARS.org"))
+  ; (set-register ?h (cons 'file (concat org-directory   "/work.org")))
+#+END_SRC
 ** Completion
 *** Vertico
 #+begin_src emacs-lisp
