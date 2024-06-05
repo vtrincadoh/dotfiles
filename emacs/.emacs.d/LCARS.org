@@ -139,7 +139,12 @@ Sacha Chua.
     (evil-mode 1)
     (evil-select-search-module 'evil-search-module 'evil-search)
     (setq evil-ex-search-persistent-highlight nil)
+
+    ;; Keybindings
     (evil-define-key 'motion help-mode-map "q" 'kill-this-buffer)
+    ; V → evil-visual-line
+    (evil-define-key 'normal 'global "V" 'evil-visual-line)
+
     (define-key evil-motion-state-map (kbd "RET") nil)
     (define-key evil-motion-state-map (kbd "SPC") nil))
 
