@@ -473,10 +473,10 @@ Funciona filete en realidad, el único tema es el texto que inserta al buffer. D
 #+end_src
 *** Módulos
 #+BEGIN_SRC emacs-lisp
-   (add-to-list 'org-modules 'org-protocol t)
+  (add-to-list 'org-modules 'org-protocol t)
 
-   (eval-after-load 'org
-     '(org-load-modules-maybe t))
+  (eval-after-load 'org
+    '(org-load-modules-maybe t))
 #+END_SRC
 *** Visual
 #+begin_src emacs-lisp
