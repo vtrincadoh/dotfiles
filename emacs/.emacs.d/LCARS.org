@@ -270,24 +270,33 @@ Centra el contenido de la página como una Olivetti.
 ** Dark Theme Toggle
 Emacs inicia con light-theme por defecto.
 #+BEGIN_SRC emacs-lisp
-  (defvar dark-mode-p nil "Whether or not dark mode is enabled")
+  (use-package theme-changer
+    :after ef-themes
+    :config
+    (setq calendar-location-name "Santiago, CL")
+    (setq calendar-latitude -33.42)
+    (setq calendar-longitude -70.54)
 
-  (defun toggle-dark-mode ()
-    "Toggle dark mode"
-    (interactive)
-    (if (not dark-mode-p)
-        (progn
-          (disable-theme 'ef-cyprus)
-          (load-theme 'ef-elea-dark)
-          (setq dark-mode-p t)
-          )
-      (progn
-        (disable-theme 'ef-elea-dark)
-        (load-theme 'ef-cyprus)
-        (setq dark-mode-p nil)
-        )
-      )
-    )
+    (change-theme 'ef-cyprus 'ef-elea-dark))
+
+   (defvar dark-mode-p nil "Whether or not dark mode is enabled")
+   
+   (defun toggle-dark-mode ()
+     "Toggle dark mode"
+     (interactive)
+     (if (not dark-mode-p)
+         (progn
+           (disable-theme 'ef-cyprus)
+           (load-theme 'ef-elea-dark)
+           (setq dark-mode-p t)
+           )
+       (progn
+         (disable-theme 'ef-elea-dark)
+         (load-theme 'ef-cyprus)
+         (setq dark-mode-p nil)
+         )
+       )
+     )
 #+END_SRC
 ** Extras
 #+BEGIN_SRC emacs-lisp
