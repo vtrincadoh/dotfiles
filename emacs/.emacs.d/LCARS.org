@@ -267,20 +267,6 @@ Centra el contenido de la página como una Olivetti.
     (setq olivetti-body-width 82)
     )
 #+END_SRC
-** Modus Themes
-#+BEGIN_SRC emacs-lisp
-  (use-package modus-themes
-    :ensure t
-    :config
-    ;;;; Add all your customizations prior to loading the themes
-    ;;(setq modus-themes-italic-constructs t
-          ;;modus-themes-bold-constructs nil)
-  ;;
-    ;;;; Maybe define some palette overrides, such as by using our presets
-    ;;(setq modus-themes-common-palette-overrides
-          ;;modus-themes-preset-overrides-intense)
-    )
-#+END_SRC
 ** Ef-themes
 #+BEGIN_SRC emacs-lisp
   (use-package ef-themes
