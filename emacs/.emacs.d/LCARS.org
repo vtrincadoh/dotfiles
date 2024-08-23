@@ -208,12 +208,11 @@ Sacha Chua.
     "pb" '(consult-projectile-switch-to-buffer :which-key "Switch buffer")
     "pt" '(org-project-capture-project-todo-completing-read :which-key "Project Todo")
 #+END_SRC
-
-*** Registers
+*** Notes
 #+BEGIN_SRC emacs-lisp
-     ;; Registers
-     "r" '(jump-to-register :which-key "Registers")
-
+  ;; Notes
+  "n" '(nil :which-key "Notes")
+  "nn" '(denote :which-key "Note Create")
 #+END_SRC
 
 *** Toggles
