@@ -143,6 +143,9 @@ Sacha Chua.
 
     ;; Keybindings
     (evil-define-key 'motion help-mode-map "q" 'kill-this-buffer)
+
+    (evil-define-key 'motion 'global (kbd "C-j") 'scroll-up-command
+                                     (kbd "C-k") 'scroll-down-command)
     ; V → evil-visual-line
     (evil-define-key 'normal 'global "V" 'evil-visual-line)
 
