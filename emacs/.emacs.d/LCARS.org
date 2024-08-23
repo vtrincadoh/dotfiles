@@ -248,9 +248,12 @@ Centra el contenido de la página como una Olivetti.
 #+END_SRC
 ** Ef-themes
 #+BEGIN_SRC emacs-lisp
-  (use-package ef-themes
-    :config
-    (load-theme 'ef-cyprus t))
+        (use-package ef-themes
+          :ensure t
+          :config
+          (if my-tablet-p
+              (load-theme 'ef-elea-dark)
+              (load-theme 'ef-cyprus)))
 #+END_SRC
 ** Dark Theme Toggle
 Emacs inicia con light-theme por defecto.
