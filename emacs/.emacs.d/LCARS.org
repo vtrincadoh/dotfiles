@@ -167,6 +167,10 @@ Sacha Chua.
    ;; Top-level functions
    "RET" '(execute-extended-command :which-key "M-x")
    "SPC" '(dashboard-open :which-key "Dashboard")
+   ;; "TAB" '(cumplete-at-point :which-key "me pica el ano")
+   "r" '(jump-to-register :which-key "Registers")
+   "w" '(save-buffer :which-key "Write/Save")
+   "/" '(consult-fd :which-key "Consult Fd")
 #+END_SRC
 *** Buffers
 #+BEGIN_SRC emacs-lisp
@@ -230,7 +234,7 @@ Sacha Chua.
 #+END_SRC
 *** Cierre
 #+BEGIN_SRC emacs-lisp
-) ;; Cierra SPC prefix block
+) ;; Cierra General.el block
 #+END_SRC
 * Visuals
 ** General
