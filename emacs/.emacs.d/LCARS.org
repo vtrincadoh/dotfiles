@@ -580,6 +580,17 @@ Funciona filete en realidad, el único tema es el texto que inserta al buffer. D
 
   ;; Aquí terminan las configuraciones
 #+end_src
+* Termux
+#+begin_src emacs-lisp
+  (unless window-system
+    (xterm-mouse-mode 1)
+    (global-set-key [mouse-4] (lambda ()
+                                (interactive)
+                                (scroll-down 1)))
+    (global-set-key [mouse-5] (lambda ()
+                                (interactive)
+                                (scroll-up 1))))
+#+end_src
 * Inspiraciones 
 - [[https://sachachua.com/dotemacs/index.html][Sacha Chua]]
 - [[https://github.com/jakebox/jake-emacs][Jacob Boxerman (JakeB)]]
