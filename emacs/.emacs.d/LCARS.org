@@ -369,16 +369,6 @@ Emacs inicia con light-theme por defecto.
     (yas-global-mode 1) ;; o M-x yas-reload-all si YAS ya inició
     )
 #+end_src
-** Whisper AI (stt)
-#+BEGIN_SRC emacs-lisp
-  (use-package whisper
-    :quelpa (whisper :fetcher github :repo "natrys/whisper.el")
-    :config
-    (setq whisper-install-directory "/tmp/"
-          whisper-model "base"
-          whisper-language "es"
-          whisper-translate nil))
-#+END_SRC
 ** Undo-tree
 #+begin_src emacs-lisp
   (use-package undo-tree
