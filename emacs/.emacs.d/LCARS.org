@@ -26,6 +26,7 @@ Robado de varias partes. Probablemente tenga spanglish metido en todas partes, p
   (setq warning-suppress-log-types '((package reinitialization)))  (package-initialize)
   ;; (load-file "~/.emacs.d/LCARS-private.el")
   (setq custom-file "~/.config/emacs/custom-settings.el")
+  (add-to-list 'load-path "~/.emacs.d/my-own-thang/")
   (setq default-directory "~") 
   (load custom-file t)
 #+end_src
@@ -234,6 +235,10 @@ Sacha Chua.
 *** Cierre
 #+BEGIN_SRC emacs-lisp
 ) ;; Cierra General.el block
+#+END_SRC
+** my-spanish-prefix
+#+BEGIN_SRC emacs-lisp
+  (require 'my-spanish-prefix)
 #+END_SRC
 * Visuals
 ** General
@@ -461,7 +466,7 @@ Funciona filete en realidad, el único tema es el texto que inserta al buffer. D
     (org-indent-mode)
     (visual-line-mode 1)
     (centered-cursor-mode)
-    (set-input-method 'spanish-prefix)
+    (set-input-method 'my-spanish-prefix)
     )
 #+end_src
 *** Preámbulo
